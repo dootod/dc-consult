@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
-    menuBtn.addEventListener('click', function() {
+    menuBtn.addEventListener('click', function(event) {
         // Basculer la classe active sur le bouton et la navbar
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
                 dropdown.classList.toggle('active');
+                
+                // Fermer les autres dropdowns
+                dropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
+                    }
+                });
             }
         });
     });
