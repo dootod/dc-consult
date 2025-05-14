@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -13,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
 </head>
+
 <body>
     <nav class="navbar">
         <a href="index.html" class="logo">
@@ -111,18 +113,22 @@
                 </ul>
             </div>
             <div class="footer-qrcode">
-                <img src="img/qrcode.png" alt="QR Code" class="qrcode-img">
+                <div class="qrcode-container">
+                    <img src="img/qrcode.png" alt="QR Code" class="qrcode-img">
+                    <span class="qrcode-text">Carte de visite</span>
+                </div>
             </div>
         </div>
         <div class="footer-separator"></div>
         <div class="footer-bottom">
             <p>&copy; 2025 DC Consult - Tous droits réservés</p>
             <div class="footer-links">
+                <a href="pdf/cgv.pdf" class="footer-link">Conditions générales de vente </a>
                 <a href="#" class="footer-link">Mentions légales</a>
-                <a href="#" class="footer-link">Accord de commerce</a>
             </div>
         </div>
     </footer>
     <script src="js/script.js"></script>
 </body>
+
 </html>

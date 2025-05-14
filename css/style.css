@@ -699,12 +699,20 @@ body {
     width: 100%;
 }
 
-/* QR Code avec animation */
+/* QR Code avec animation améliorée */
 .footer-qrcode {
     flex: 1;
     min-width: 250px;
     display: flex;
     justify-content: center;
+    position: relative;
+}
+
+.qrcode-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 50px; /* Espace pour le texte */
 }
 
 .qrcode-img {
@@ -721,6 +729,42 @@ body {
     transform: scale(1.05) rotate(2deg);
     border-color: #0055A4;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qrcode-text {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: #0055A4;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.qrcode-text::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #0055A4;
+}
+
+.qrcode-img:hover + .qrcode-text,
+.qrcode-container:hover .qrcode-text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* Séparateur et bas de footer */
@@ -748,6 +792,7 @@ body {
     gap: 1.8rem;
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
     .footer-content {
         gap: 3rem;
@@ -760,6 +805,12 @@ body {
     .qrcode-img {
         width: 200px;
         height: 200px;
+    }
+    
+    .qrcode-text {
+        font-size: 1rem;
+        bottom: -40px;
+        padding: 8px 16px;
     }
 }
 
@@ -797,6 +848,11 @@ body {
         height: 180px;
     }
     
+    .qrcode-text {
+        bottom: -35px;
+        font-size: 0.95rem;
+    }
+    
     .footer-bottom {
         flex-direction: column;
         gap: 1rem;
@@ -820,8 +876,8 @@ body {
     }
     
     .qrcode-img {
-        width: 170px;
-        height: 170px;
+        width: 150px;
+        height: 150px;
     }
     
     .footer-nav h3 {
@@ -830,5 +886,18 @@ body {
     
     .footer-link {
         font-size: 0.95rem;
+    }
+    
+    .qrcode-text {
+        bottom: -30px;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    
+    .qrcode-text::before {
+        top: -6px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #0055A4;
     }
 }
