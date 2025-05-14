@@ -166,7 +166,7 @@ body {
     position: relative;
     min-height: 70vh;
     padding-top: 70px;
-    background-image: url('img/fond.png');
+    background-image: url('../img/fond.png');
     background-size: cover;
     background-position: center;
     display: flex;
