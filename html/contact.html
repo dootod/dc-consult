@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC Consult - Nous contacter</title>
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../img/logo-blanc.png" alt="DC Consult Logo">
+        </a>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+
+            <li class="dropdown">
+                <a href="#">Références <span class="dropdown-arrow"><i class="fa-solid fa-caret-down"></i></span></a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Références</a></li>
+                    <li><a href="#">Nos clients</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Logiciels</a></li>
+            <li><a href="contact.html" class="active">Nous contacter</a></li>
+        </ul>
+    </nav>
+    <div class="contact-wrapper">
+        <div class="contact-hero">
+            <div class="hero-content">
+                <h1>Nous contacter</h1>
+                <div class="floating-shapes">
+                    <div class="shape triangle"></div>
+                    <div class="shape circle"></div>
+                    <div class="shape square"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <h2><span><i class="fa-solid fa-envelope"></i></span> Envoyez-nous un message</h2>
+                    <div class="form-underline"></div>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="input-group floating">
+                        <input type="text" id="name" required>
+                        <label for="name">Nom complet</label>
+                        <div class="input-highlight"></div>
+                    </div>
+
+                    <div class="input-group floating">
+                        <input type="email" id="email" required>
+                        <label for="email">Adresse email</label>
+                        <div class="input-highlight"></div>
+                    </div>
+
+                    <div class="input-group floating">
+                        <input type="text" id="subject" required>
+                        <label for="subject">Sujet</label>
+                        <div class="input-highlight"></div>
+                    </div>
+
+                    <div class="input-group floating">
+                        <textarea id="message" required style="resize: none;"></textarea>
+                        <label for="message">Votre message</label>
+                        <div class="input-highlight"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Envoyer</span>
+                        <div class="submit-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-info-container">
+                <div class="info-header">
+                    <h2><span><i class="fa-solid fa-phone"></i></span> Nos coordonnées</h2>
+                    <div class="info-underline"></div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Adresse</h3>
+                            <p>10 ALLEE DES CHAMPS ELYSEES<br>91080 EVRY-COURCOURONNES</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Téléphone</h3>
+                            <p><a href="tel:+33123456789">06 37 19 45 74</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:dc.consult@orange.fr">dc.consult@orange.fr</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.332057549246!2d2.430672315665805!3d48.62482237926395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5dee6b1ad3d0d%3A0x1c1a8a6e0e8e0e8e!2s10%20All%C3%A9e%20des%20Champs%20Elys%C3%A9es%2C%2091080%20%C3%89vry-Courcouronnes!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="../index.html">
+                    <img src="../img/logo.png" alt="DC Consult Logo" class="footer-logo-img">
+                </a>
+            </div>
+            <div class="footer-nav">
+                <h3>Navigation</h3>
+                <div class="nav-bar"></div>
+                <ul>
+                    <li><a href="../index.html" class="footer-link">Accueil</a></li>
+                    <li><a href="#" class="footer-link">Références</a></li>
+                    <li><a href="#" class="footer-link">Nos clients</a></li>
+                    <li><a href="#" class="footer-link">Logiciels</a></li>
+                    <li><a href="contact.html" class="footer-link">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="footer-qrcode">
+                <div class="qrcode-container">
+                    <img src="../img/qrcode.png" alt="QR Code" class="qrcode-img">
+                    <span class="qrcode-text">Carte de visite</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-separator"></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DC Consult - Tous droits réservés</p>
+            <div class="footer-links">
+                <a href="../pdf/cgv.pdf" target="_blank" class="footer-link">Conditions générales de vente </a>
+                <a href="#" class="footer-link">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/contact.js"></script>
+</body>
+
+</html>
