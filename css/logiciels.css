@@ -349,6 +349,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
+    align-items: stretch; /* Force l'alignement des cartes */
 }
 
 /* Software Card */
@@ -360,6 +361,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%; /* Prend toute la hauteur disponible */
 }
 
 .software-card:hover {
@@ -400,7 +402,9 @@ body {
 
 .software-content {
     padding: 25px;
-    flex-grow: 1;
+    flex-grow: 1; /* Permet au contenu de prendre l'espace disponible */
+    display: flex;
+    flex-direction: column;
 }
 
 .software-content p {
@@ -436,8 +440,8 @@ body {
 }
 
 .software-link-container {
-    margin-top: auto;
-    padding-top: 15px;
+    margin-top: auto; /* Pousse le bouton vers le bas */
+    padding: 0 25px 25px 25px;
     text-align: center;
 }
 
@@ -461,6 +465,16 @@ body {
 }
 
 /* Responsive Styles */
+@media (min-width: 1025px) {
+    .software-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .software-card {
+        min-height: 550px; /* Ajustez selon vos besoins */
+    }
+}
+
 @media (max-width: 768px) {
     .software-hero {
         height: calc(150px + 10vh); 
