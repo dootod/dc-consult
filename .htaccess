@@ -1,0 +1,39 @@
+# Bloquer l'accès aux fichiers sensibles
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Bloquer l'accès aux fichiers de configuration
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protection contre les attaques XSS
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+</IfModule>
+
+# Limitation du taux de requêtes
+<IfModule mod_evasive24.c>
+    DOSHashTableSize    3097
+    DOSPageCount        5
+    DOSPageInterval     1
+    DOSSiteCount        50
+    DOSSiteInterval     1
+    DOSBlockingPeriod   600
+</IfModule>
+
+# Désactiver l'affichage des erreurs PHP en production
+php_flag display_errors Off
+php_flag log_errors On

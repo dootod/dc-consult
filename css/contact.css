@@ -417,8 +417,10 @@ body {
     gap: 25px;
 }
 
+/* Correction des labels flottants */
 .input-group {
     position: relative;
+    margin-bottom: 25px;
 }
 
 .input-group input,
@@ -428,8 +430,9 @@ body {
     border: 1px solid var(--gray);
     border-radius: 8px;
     font-size: 1rem;
-    background: transparent;
+    background: white;
     transition: all 0.3s ease;
+    outline: none;
 }
 
 .input-group textarea {
@@ -441,12 +444,36 @@ body {
     position: absolute;
     left: 15px;
     top: 15px;
-    color: var(--dark);
+    color: #666;
     font-weight: 500;
     transition: all 0.3s ease;
     pointer-events: none;
     background: white;
     padding: 0 5px;
+    font-size: 1rem;
+}
+
+/* Labels flottants - quand l'input est focus ou a une valeur */
+.input-group input:focus~label,
+.input-group input:valid~label,
+.input-group input:not(:placeholder-shown)~label,
+.input-group textarea:focus~label,
+.input-group textarea:valid~label,
+.input-group textarea:not(:placeholder-shown)~label,
+.input-group.has-value label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    background: white;
+    padding: 0 5px;
+}
+
+/* Focus styles */
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 5px 15px rgba(0, 85, 164, 0.1);
 }
 
 .input-highlight {
@@ -457,24 +484,6 @@ body {
     width: 0;
     background: var(--primary);
     transition: all 0.4s ease;
-}
-
-/* Floating Label Effect */
-.input-group.floating input:focus~label,
-.input-group.floating input:valid~label,
-.input-group.floating textarea:focus~label,
-.input-group.floating textarea:valid~label {
-    top: -10px;
-    left: 10px;
-    font-size: 0.8rem;
-    color: var(--primary);
-}
-
-.input-group input:focus,
-.input-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 5px 15px rgba(0, 85, 164, 0.1);
 }
 
 .input-group input:focus~.input-highlight,
@@ -957,5 +966,142 @@ body {
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-bottom: 6px solid #0055A4;
+    }
+}
+
+/* Styles pour les notifications - À ajouter à la fin de contact.css */
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    min-width: 300px;
+    max-width: 500px;
+    z-index: 1000;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-left: 4px solid var(--success);
+}
+
+.notification.error {
+    border-left-color: var(--error);
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.notification-content i {
+    font-size: 1.2rem;
+    color: var(--success);
+}
+
+.notification.error .notification-content i {
+    color: var(--error);
+}
+
+.notification-content span {
+    color: var(--dark);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.notification-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--dark);
+}
+
+/* Animation d'entrée */
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animation de sortie */
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* Responsive pour les notifications */
+@media (max-width: 480px) {
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+        transform: translateY(-100px);
+    }
+
+    .notification.show {
+        transform: translateY(0);
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutRight {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        to {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
     }
 }

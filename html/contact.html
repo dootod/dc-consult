@@ -58,28 +58,28 @@
                     <div class="form-underline"></div>
                 </div>
 
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form" action="../php/contact-form.php" method="post">
                     <div class="input-group floating">
-                        <input type="text" id="name" required>
                         <label for="name">Nom complet</label>
+                        <input type="text" name="name" id="name" required>
                         <div class="input-highlight"></div>
                     </div>
 
                     <div class="input-group floating">
-                        <input type="email" id="email" required>
                         <label for="email">Adresse email</label>
+                        <input type="email" name="email" id="email" required>
                         <div class="input-highlight"></div>
                     </div>
 
                     <div class="input-group floating">
-                        <input type="text" id="subject" required>
                         <label for="subject">Sujet</label>
+                        <input type="text" name="subject" id="subject" required>
                         <div class="input-highlight"></div>
                     </div>
 
                     <div class="input-group floating">
-                        <textarea id="message" required style="resize: none;"></textarea>
                         <label for="message">Votre message</label>
+                        <textarea name="message" id="message" required style="resize: none;"></textarea>
                         <div class="input-highlight"></div>
                     </div>
 
