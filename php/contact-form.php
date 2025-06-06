@@ -86,7 +86,6 @@ $message_email .= "Sujet : " . htmlspecialchars($sujet, ENT_QUOTES, 'UTF-8') . "
 $message_email .= "Message :\n" . htmlspecialchars($message_contenu, ENT_QUOTES, 'UTF-8') . "\n\n";
 $message_email .= "---\n";
 $message_email .= "Envoyé le : " . date('d/m/Y à H:i:s') . "\n";
-$message_email .= "IP : " . ($_SERVER['REMOTE_ADDR'] ?? 'Inconnue');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
