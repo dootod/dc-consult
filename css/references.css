@@ -16,7 +16,8 @@
 /* LAYOUT STRUCTURE */
 /* =============== */
 .references-wrapper {
-    padding-top: 70px; /* Navbar height offset */
+    padding-top: 70px;
+    /* Navbar height offset */
 }
 
 * {
@@ -104,9 +105,17 @@
 }
 
 @keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(10deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
 }
 
 /* ----- References Grid ----- */
@@ -136,22 +145,106 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
+/* Carousel Styles */
 .reference-image {
     height: 250px;
     overflow: hidden;
+    position: relative;
 }
 
-.reference-image img {
-    width: 100%;
+.image-carousel {
+    position: relative;
     height: 100%;
-    object-fit: cover;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    height: 100%;
     transition: transform 0.5s ease;
 }
 
-.reference-card:hover .reference-image img {
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Changé de cover à contain pour voir l'image entière */
+    object-position: center;
+    transition: transform 0.5s ease;
+    background-color: #f8f9fa;
+    /* Fond clair pour les images avec transparence */
+}
+
+.reference-card:hover .carousel-item img {
     transform: scale(1.05);
 }
 
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.3s ease;
+    z-index: 2;
+}
+
+.carousel-control.prev {
+    left: 15px;
+}
+
+.carousel-control.next {
+    right: 15px;
+}
+
+.reference-card:hover .carousel-control {
+    opacity: 1;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: white;
+}
+
+/* Reference Details */
 .reference-details {
     padding: 25px;
     flex-grow: 1;
@@ -173,6 +266,31 @@
     align-items: center;
     gap: 5px;
     font-size: 0.9rem;
+}
+
+/* Nouveau style pour les informations du projet */
+.reference-project-info {
+    background: var(--light);
+    border-left: 4px solid var(--primary);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.project-info-item {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.project-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.project-info-item strong {
+    color: var(--primary);
+    font-weight: 600;
+    margin-right: 8px;
 }
 
 .reference-description {
@@ -222,7 +340,7 @@
     .references-container {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
-    
+
     .reference-image {
         height: 220px;
     }
@@ -231,19 +349,19 @@
 /* ----- Tablet Portrait ----- */
 @media (max-width: 768px) {
     .references-hero {
-        height: calc(150px + 10vh); 
-        padding-top: 20px; 
+        height: calc(150px + 10vh);
+        padding-top: 20px;
     }
-    
+
     .hero-content h1 {
         font-size: 1.8rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .hero-content p {
         font-size: 0.9rem;
     }
-    
+
     .references-container {
         grid-template-columns: 1fr;
     }
@@ -252,6 +370,12 @@
         max-width: 500px;
         margin: 0 auto;
     }
+
+    .carousel-control {
+        opacity: 1;
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* ----- Mobile ----- */
@@ -259,13 +383,37 @@
     .references-hero {
         height: 200px;
     }
-    
+
     .hero-content h1 {
         font-size: 1.8rem;
     }
-    
+
     .reference-btn {
         padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .carousel-control {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-indicators {
+        bottom: 10px;
+    }
+
+    .carousel-indicator {
+        width: 8px;
+        height: 8px;
+    }
+
+    .reference-project-info {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+    }
+
+    .project-info-item {
         font-size: 0.9rem;
     }
 }
@@ -425,6 +573,65 @@
 
 .menu-btn.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--primary);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+        z-index: 9;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+        width: 90%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-btn {
+        display: flex;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 }
 
 /* ----- Footer ----- */
@@ -632,11 +839,8 @@
     gap: 1.8rem;
 }
 
+/* Responsive Footer */
 @media (max-width: 1024px) {
-    .nav-links {
-        gap: 1.5rem;
-    }
-    
     .footer-content {
         gap: 3rem;
     }
@@ -657,65 +861,7 @@
     }
 }
 
-/* ----- Tablet Styles ----- */
 @media (max-width: 768px) {
-    .menu-btn {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary);
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-        z-index: 100;
-    }
-
-    .nav-links.active {
-        max-height: 500px;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links a {
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-    }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        width: 100%;
-        box-shadow: none;
-        border-radius: 0;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-
-    .dropdown.active .dropdown-arrow {
-        transform: rotate(180deg);
-    }
-
     .footer {
         padding: 3rem 1.5rem 0;
     }
@@ -768,12 +914,7 @@
     }
 }
 
-/* ----- Mobile Styles ----- */
 @media (max-width: 480px) {
-    .navbar {
-        padding: 1rem;
-    }
-
     .footer {
         padding: 2.5rem 1rem 0;
     }
