@@ -579,62 +579,80 @@
     transform: translateY(-9px) rotate(-45deg);
 }
 
-/* Mobile Navigation */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
+/* ----- Tablet Styles ----- */
 @media (max-width: 768px) {
+    .menu-btn {
+        display: flex;
+    }
+
     .nav-links {
         position: fixed;
         top: 70px;
-        left: -100%;
+        left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
         background-color: var(--primary);
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
-        padding-top: 2rem;
-        transition: left 0.3s ease;
-        z-index: 9;
+        padding: 0;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        z-index: 100;
     }
 
     .nav-links.active {
-        left: 0;
+        max-height: 500px;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
 
     .nav-links li {
-        margin: 1rem 0;
-        width: 90%;
+        width: 100%;
         text-align: center;
     }
 
     .nav-links a {
-        display: block;
         padding: 1rem;
-        font-size: 1.1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .menu-btn {
         display: flex;
+        justify-content: center;
     }
 
     .dropdown-content {
         position: static;
         display: none;
-        background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
         box-shadow: none;
         border-radius: 0;
-        width: 100%;
-        margin-top: 0.5rem;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
     }
 
     .dropdown.active .dropdown-content {
         display: block;
     }
 
-    .dropdown-content a {
-        padding: 0.8rem 1rem;
-        font-size: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    .dropdown.active .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    .nav-bar {
+        margin: 0 auto 1.5rem auto;
+    }
+}
+
+/* ----- Mobile Styles ----- */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem;
     }
 }
 

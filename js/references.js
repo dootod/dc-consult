@@ -103,13 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const img = item.querySelector('img');
             if (img) {
                 img.style.cursor = 'pointer';
-                
+
                 img.addEventListener('click', () => {
                     currentLightboxItems = Array.from(items).map(item => {
                         const img = item.querySelector('img');
                         return img ? img.src : '';
                     }).filter(src => src !== '');
-                    
+
                     currentLightboxIndex = currentLightboxItems.indexOf(img.src);
                     if (currentLightboxIndex !== -1) {
                         openLightbox();
@@ -199,14 +199,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Déclenchement au chargement et au scroll
     animateCardsOnScroll();
     window.addEventListener('scroll', animateCardsOnScroll);
+});
 
+document.addEventListener('DOMContentLoaded', function () {
     // Gestion du menu burger
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
     menuBtn.addEventListener('click', function (event) {
+        // Basculer la classe active sur le bouton et la navbar
         this.classList.toggle('active');
         navLinks.classList.toggle('active');
+
+        // Empêcher la propagation de l'événement
         event.stopPropagation();
     });
 
@@ -221,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 dropdown.classList.toggle('active');
 
+                // Fermer les autres dropdowns
                 dropdowns.forEach(otherDropdown => {
                     if (otherDropdown !== dropdown) {
                         otherDropdown.classList.remove('active');
@@ -230,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Fermer le menu quand on clique ailleurs sur la page
+    // Fermer le menu quand on clique n'importe où sur la page
     document.addEventListener('click', function (e) {
         if (!e.target.closest('.navbar') || e.target.closest('.nav-links a:not(.dropdown a)')) {
             if (window.innerWidth <= 768) {
