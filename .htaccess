@@ -33,10 +33,15 @@ DirectoryIndex index.html
 </IfModule>
 
 # Pages d'erreur personnalisées
-ErrorDocument 401 https://www.dc-consult-bet.fr/error/401.html
-ErrorDocument 402 https://www.dc-consult-bet.fr/error/402.html
-ErrorDocument 403 https://www.dc-consult-bet.fr/error/403.html
-ErrorDocument 404 https://www.dc-consult-bet.fr/error/404.html
+ErrorDocument 401 https://www.dc-consult-bet.fr/401
+ErrorDocument 402 https://www.dc-consult-bet.fr/402
+ErrorDocument 403 https://www.dc-consult-bet.fr/403
+ErrorDocument 404 https://www.dc-consult-bet.fr/404
+
+RewriteRule ^401/?$ /error/401.html [L]
+RewriteRule ^402/?$ /error/402.html [L]
+RewriteRule ^403/?$ /error/403.html [L]
+RewriteRule ^404/?$ /error/404.html [L]
 
 # Activation du module de réécriture
 RewriteEngine On
