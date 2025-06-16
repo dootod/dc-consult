@@ -33,10 +33,10 @@ DirectoryIndex index.html
 </IfModule>
 
 # Pages d'erreur personnalisées
-ErrorDocument 401 https://www.dc-consult-bet.fr/401
-ErrorDocument 402 https://www.dc-consult-bet.fr/402
-ErrorDocument 403 https://www.dc-consult-bet.fr/403
-ErrorDocument 404 https://www.dc-consult-bet.fr/404
+ErrorDocument 401 /401
+ErrorDocument 402 /402
+ErrorDocument 403 /403
+ErrorDocument 404 /404
 
 RewriteRule ^401/?$ /error/401.html [L]
 RewriteRule ^402/?$ /error/402.html [L]
