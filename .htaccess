@@ -1,21 +1,17 @@
-# Bloquer l'accès aux fichiers sensibles
+Options -Indexes
+
 <Files ".env">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </Files>
 
 <Files "*.env">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </Files>
 
-# Bloquer l'accès aux fichiers de configuration
 <FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </FilesMatch>
 
-# Protection contre les attaques XSS
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options nosniff
     Header always set X-Frame-Options DENY
@@ -24,7 +20,6 @@
     Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://maps.gstatic.com https://maps.googleapis.com; connect-src 'self' https://maps.googleapis.com; frame-src https://www.google.com https://maps.googleapis.com;"
 </IfModule>
 
-# Limitation du taux de requêtes
 <IfModule mod_evasive24.c>
     DOSHashTableSize    3097
     DOSPageCount        5
@@ -34,6 +29,7 @@
     DOSBlockingPeriod   600
 </IfModule>
 
-# Désactiver l'affichage des erreurs PHP en production
-php_flag display_errors Off
-php_flag log_errors On
+ErrorDocument 401 https://www.dc-consult-bet.fr/error/401.html
+ErrorDocument 402 https://www.dc-consult-bet.fr/error/402.html
+ErrorDocument 403 https://www.dc-consult-bet.fr/error/403.html
+ErrorDocument 404 https://www.dc-consult-bet.fr/error/404.html

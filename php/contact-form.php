@@ -11,15 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 // Configuration depuis les variables d'environnement
 $maxMessageLength = env('MAX_MESSAGE_LENGTH', 5000);
-// $allowedDomains = explode(',', env('ALLOWED_DOMAINS', ''));
+$allowedDomains = explode(',', env('ALLOWED_DOMAINS', ''));
 
-// // Vérification du domaine (optionnel)
-// $httpHost = $_SERVER['HTTP_HOST'] ?? '';
-// if (!empty($allowedDomains) && !in_array($httpHost, $allowedDomains)) {
-//     http_response_code(403);
-//     echo json_encode(['success' => false, 'message' => 'Domaine non autorisé']);
-//     exit;
-// }
+// Vérification du domaine (optionnel)
+$httpHost = $_SERVER['HTTP_HOST'] ?? '';
+if (!empty($allowedDomains) && !in_array($httpHost, $allowedDomains)) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'message' => 'Domaine non autorisé']);
+    exit;
+}
 
 // Récupérer et nettoyer les données
 $nom = isset($_POST['name']) ? trim($_POST['name']) : '';

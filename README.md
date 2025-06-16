@@ -24,4 +24,4 @@ SMTP_TO_EMAIL=contact.formulaire.bet@gmail.com
 SMTP_TO_NAME=DC Consult
 
 MAX_MESSAGE_LENGTH=5000
-# ALLOWED_DOMAINS=votre-domaine.com,www.votre-domaine.com
+ALLOWED_DOMAINS=www.dc-consult-bet.fr,dc-consult-bet.fr
