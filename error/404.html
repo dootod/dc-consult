@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DC Consult - Erreur 404</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8F9FA;
+            color: #2C2F33;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .error-code {
+            font-size: 10rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+            color: #0055A4;
+            position: relative;
+            display: inline-block;
+        }
+
+        .error-code::before {
+            content: "🔍";
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            animation: search 2s ease-in-out infinite;
+        }
+
+        @keyframes search {
+            0%, 100% { transform: translateY(-50%) rotate(-15deg); }
+            50% { transform: translateY(-50%) rotate(15deg); }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            color: #0055A4;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .error-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #0055A4;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 85, 164, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-btn:hover {
+            background-color: #003366;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 85, 164, 0.4);
+        }
+
+        .error-illustration {
+            width: 300px;
+            height: 200px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .construction {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .construction-crane {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 150px;
+            background-color: #0055A4;
+            border-radius: 5px;
+        }
+
+        .construction-arm {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 150px;
+            height: 10px;
+            background-color: #2C2F33;
+            transform-origin: left center;
+            animation: craneMove 4s infinite alternate;
+        }
+
+        .construction-hook {
+            position: absolute;
+            bottom: -20px;
+            left: 140px;
+            width: 10px;
+            height: 20px;
+            background-color: #2C2F33;
+            animation: hookMove 4s infinite alternate;
+        }
+
+        .construction-beam {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 200px;
+            height: 20px;
+            background-color: #DDE1E4;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        @keyframes craneMove {
+            0% { transform: rotate(-30deg); }
+            100% { transform: rotate(30deg); }
+        }
+
+        @keyframes hookMove {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(30px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: floatAround 15s linear infinite;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50vw, 25vh) rotate(90deg);
+            }
+            50% {
+                transform: translate(80vw, 50vh) rotate(180deg);
+            }
+            75% {
+                transform: translate(30vw, 75vh) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            .error-code::before {
+                right: -40px;
+                font-size: 2.5rem;
+            }
+            .error-title {
+                font-size: 1.8rem;
+            }
+            .error-message {
+                font-size: 1rem;
+            }
+            .error-illustration {
+                width: 250px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../img/logo-blanc.png" alt="DC Consult Logo">
+        </a>
+    </nav>
+
+    <div class="error-container">
+        <div class="floating-elements" id="floatingElements"></div>
+        
+        <div class="error-content">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Page non trouvée</h2>
+            <p class="error-message">
+                Oups ! Il semble que la page que vous cherchez soit en construction ou n'existe plus.<br>
+                Notre équipe travaille dur pour construire de nouvelles fonctionnalités.
+            </p>
+            
+            <div class="error-illustration">
+                <div class="construction">
+                    <div class="construction-crane"></div>
+                    <div class="construction-arm"></div>
+                    <div class="construction-hook"></div>
+                    <div class="construction-beam"></div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="error-btn">
+                <i class="fas fa-home"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['🔧', '⚙️', '🏗️', '📐', '🔨', '🛠️', '🏭', '🧱'];
+            
+            // Créer des éléments flottants
+            for (let i = 0; i < 10; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                element.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(element);
+            }
+        });
+    </script>
+</body>
+
+</html>
