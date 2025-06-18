@@ -71,6 +71,9 @@ RewriteRule ^404/?$ /error/404.html [L]
 # Activation du module de réécriture
 RewriteEngine On
 
+# Blocage du dossier PHPMailer (sécurité)
+RewriteRule ^PHPMailer/ - [F,L]
+
 # Redirection HTTPS (si nécessaire)
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
